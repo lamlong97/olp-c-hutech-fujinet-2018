@@ -1,0 +1,126 @@
+[
+    {
+        "id": "d6a8f317.1edd1",
+        "type": "tab",
+        "label": "Olympic Câu 5",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "4d9cb973.659498",
+        "type": "inject",
+        "z": "d6a8f317.1edd1",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "8975e0dd.9f748"
+            ]
+        ]
+    },
+    {
+        "id": "8975e0dd.9f748",
+        "type": "function",
+        "z": "d6a8f317.1edd1",
+        "name": "TEMP",
+        "func": "function getRandomInt(min, max) {\n  min = Math.ceil(min);\n  max = Math.floor(max);\n  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive\n}\nvar x=getRandomInt(20,40);\nmsg.payload={\"temp\":x};\nreturn [msg];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 498.0000114440918,
+        "y": 261.00000953674316,
+        "wires": [
+            [
+                "2a486e22.2edd62"
+            ]
+        ]
+    },
+    {
+        "id": "c2cecd17.1193f",
+        "type": "debug",
+        "z": "d6a8f317.1edd1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 844.0000228881836,
+        "y": 392.0000114440918,
+        "wires": []
+    },
+    {
+        "id": "2a486e22.2edd62",
+        "type": "mqtt out",
+        "z": "d6a8f317.1edd1",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "",
+        "retain": "",
+        "broker": "32336f22.c41e4",
+        "x": 830,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5d5029ef.2d52f8",
+        "type": "mqtt in",
+        "z": "d6a8f317.1edd1",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "0",
+        "broker": "32336f22.c41e4",
+        "x": 245,
+        "y": 478.00001525878906,
+        "wires": [
+            [
+                "4e35743e.64c43c"
+            ]
+        ]
+    },
+    {
+        "id": "4e35743e.64c43c",
+        "type": "json",
+        "z": "d6a8f317.1edd1",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 572.0000152587891,
+        "y": 461.00000953674316,
+        "wires": [
+            [
+                "c2cecd17.1193f"
+            ]
+        ]
+    },
+    {
+        "id": "32336f22.c41e4",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "test-client",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
