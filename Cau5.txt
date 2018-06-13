@@ -1,8 +1,15 @@
 [
     {
-        "id": "4d9cb973.659498",
+        "id": "3c9b9c6e.f1c2b4",
+        "type": "tab",
+        "label": "Olympic Câu 5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "dd4425d0.472868",
         "type": "inject",
-        "z": "d6a8f317.1edd1",
+        "z": "3c9b9c6e.f1c2b4",
         "name": "",
         "topic": "",
         "payload": "",
@@ -10,107 +17,102 @@
         "repeat": "1",
         "crontab": "",
         "once": false,
-        "onceDelay": 0.1,
-        "x": 170,
-        "y": 240,
+        "onceDelay": "",
+        "x": 240.00001525878906,
+        "y": 188.00000858306885,
         "wires": [
             [
-                "8975e0dd.9f748"
+                "c6613340.19321"
             ]
         ]
     },
     {
-        "id": "8975e0dd.9f748",
+        "id": "c6613340.19321",
         "type": "function",
-        "z": "d6a8f317.1edd1",
-        "name": "TEMP",
-        "func": "function getRandomInt(min, max) {\n  min = Math.ceil(min);\n  max = Math.floor(max);\n  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive\n}\nvar x=getRandomInt(20,40);\nmsg.payload={\"temp\":x};\nreturn [msg];\n",
-        "outputs": 1,
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "func": "\nvar temp = Math.floor((Math.random() * 21) + 20);\nmsg.payload ={\"temp\":temp};\n\nreturn msg;",
+        "outputs": "1",
         "noerr": 0,
-        "x": 498.0000114440918,
-        "y": 261.00000953674316,
+        "x": 444.00001525878906,
+        "y": 195.00000858306885,
         "wires": [
             [
-                "2a486e22.2edd62"
+                "bf1abbbb.0b7b68"
             ]
         ]
     },
     {
-        "id": "c2cecd17.1193f",
-        "type": "debug",
-        "z": "d6a8f317.1edd1",
+        "id": "bf1abbbb.0b7b68",
+        "type": "json",
+        "z": "3c9b9c6e.f1c2b4",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 844.0000228881836,
-        "y": 392.0000114440918,
-        "wires": []
+        "pretty": false,
+        "x": 641.0000152587891,
+        "y": 174.00000858306885,
+        "wires": [
+            [
+                "ce62f95a.cbf088"
+            ]
+        ]
     },
     {
-        "id": "2a486e22.2edd62",
+        "id": "ce62f95a.cbf088",
         "type": "mqtt out",
-        "z": "d6a8f317.1edd1",
+        "z": "3c9b9c6e.f1c2b4",
         "name": "",
         "topic": "OLPC-03/Sensor01",
         "qos": "",
         "retain": "",
-        "broker": "32336f22.c41e4",
-        "x": 830,
-        "y": 220,
+        "broker": "b17d539b.45e71",
+        "x": 794.0000152587891,
+        "y": 283.00000858306885,
         "wires": []
     },
     {
-        "id": "5d5029ef.2d52f8",
+        "id": "b3c2257d.247fc8",
         "type": "mqtt in",
-        "z": "d6a8f317.1edd1",
+        "z": "3c9b9c6e.f1c2b4",
         "name": "",
         "topic": "OLPC-03/Sensor01",
-        "qos": "0",
-        "broker": "32336f22.c41e4",
-        "x": 245,
-        "y": 478.00001525878906,
+        "qos": "2",
+        "broker": "b17d539b.45e71",
+        "x": 402.00001525878906,
+        "y": 320.00000858306885,
         "wires": [
             [
-                "4e35743e.64c43c"
+                "369d086e.1f8568"
             ]
         ]
     },
     {
-        "id": "4e35743e.64c43c",
-        "type": "json",
-        "z": "d6a8f317.1edd1",
+        "id": "369d086e.1f8568",
+        "type": "debug",
+        "z": "3c9b9c6e.f1c2b4",
         "name": "",
-        "property": "payload",
-        "action": "str",
-        "pretty": false,
-        "x": 572.0000152587891,
-        "y": 461.00000953674316,
-        "wires": [
-            [
-                "c2cecd17.1193f"
-            ]
-        ]
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 617.0000152587891,
+        "y": 345.00000858306885,
+        "wires": []
     },
     {
-        "id": "32336f22.c41e4",
+        "id": "b17d539b.45e71",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
         "broker": "broker.mqtt-dashboard.com",
         "port": "1883",
-        "clientid": "client_2",
+        "clientid": "client1",
         "usetls": false,
         "compatmode": true,
-        "keepalive": "60",
+        "keepalive": "6000",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
         "closeTopic": "",
-        "closeQos": "0",
         "closePayload": "",
         "willTopic": "",
         "willQos": "0",
