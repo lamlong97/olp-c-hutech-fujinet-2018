@@ -1,0 +1,199 @@
+[
+    {
+        "id": "90622c4.2e176d",
+        "type": "tab",
+        "label": "Olympic Câu 7",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7d5f380e.3195e8",
+        "type": "inject",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "x": 417,
+        "y": 94,
+        "wires": [
+            [
+                "b35067d4.69ab18"
+            ]
+        ]
+    },
+    {
+        "id": "b35067d4.69ab18",
+        "type": "function",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "func": "var ec = +(Math.random() * (2.4-0.5) + 0.5).toFixed(1);\nvar humi = Math.floor((Math.random() * 41) + 40);\nmsg.payload ={\"ec\": ec,\"humi\" :humi};\n//var msg1={};\n//var msg2={};\nflow.payload1=ec;\nflow.payload2=humi;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 621,
+        "y": 101,
+        "wires": [
+            [
+                "9fa44c49.90bdf"
+            ]
+        ]
+    },
+    {
+        "id": "9fa44c49.90bdf",
+        "type": "json",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "pretty": false,
+        "x": 818,
+        "y": 80,
+        "wires": [
+            [
+                "a7d0c41c.04ac58"
+            ]
+        ]
+    },
+    {
+        "id": "3759dcd4.78d124",
+        "type": "mqtt in",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "topic": "OLPC-03/Sensor03",
+        "qos": "2",
+        "broker": "52e8c7eb.3a39f8",
+        "x": 455,
+        "y": 352,
+        "wires": [
+            [
+                "b6983858.e84918"
+            ]
+        ]
+    },
+    {
+        "id": "a7d0c41c.04ac58",
+        "type": "mqtt out",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "topic": "OLPC-03/Sensor03",
+        "qos": "",
+        "retain": "",
+        "broker": "52e8c7eb.3a39f8",
+        "x": 971,
+        "y": 189,
+        "wires": []
+    },
+    {
+        "id": "a53f009d.91fa1",
+        "type": "ui_chart",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "group": "38140fd2.a32ea",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 918,
+        "y": 265,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8580b8f2.fb4fd8",
+        "type": "function",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "func": "var msg1={};\nvar msg2 = {};\nmsg1.payload=+msg.payload.ec;\nmsg2.payload=+msg.payload.humi;\nmsg1.topic='EC';\nmsg2.topic='Humidity';\nreturn [msg1,msg2];",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 735,
+        "y": 350,
+        "wires": [
+            [
+                "a53f009d.91fa1"
+            ],
+            [
+                "a53f009d.91fa1"
+            ]
+        ]
+    },
+    {
+        "id": "b6983858.e84918",
+        "type": "json",
+        "z": "90622c4.2e176d",
+        "name": "",
+        "pretty": true,
+        "x": 608,
+        "y": 385,
+        "wires": [
+            [
+                "8580b8f2.fb4fd8"
+            ]
+        ]
+    },
+    {
+        "id": "52e8c7eb.3a39f8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_3",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "38140fd2.a32ea",
+        "type": "ui_group",
+        "z": "",
+        "name": "Default",
+        "tab": "2e30bf98.9a505",
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "2e30bf98.9a505",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
