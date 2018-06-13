@@ -1,6 +1,6 @@
-Hội thi Olypic Tin học HUTECH - FUJINET 2018 
-Mã đội: OLP.C.03 
-Tên đội: Công chúa bụng mỡ 
+Hội thi Olypic Tin học HUTECH - FUJINET 2018 /br
+Mã đội: OLP.C.03 /br
+Tên đội: Công chúa bụng mỡ /br 
 Thành viên: 
 1. Lâm Thành Long - 1511060539
 2. Lầu Sẹc Dần - 1511060444 
