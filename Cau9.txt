@@ -1,0 +1,227 @@
+[
+    {
+        "id": "8677cb69.dbe818",
+        "type": "tab",
+        "label": "Olympic Câu 9",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "14aede12.812b52",
+        "type": "mongodb out",
+        "z": "8677cb69.dbe818",
+        "mongodb": "e46a9ad9.8029b8",
+        "name": "Olympic Hutech",
+        "collection": "cau8",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 824.1666793823242,
+        "y": 269.00007152557373,
+        "wires": []
+    },
+    {
+        "id": "94244b5e.009208",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "2",
+        "broker": "b17d539b.45e71",
+        "x": 337,
+        "y": 248,
+        "wires": [
+            [
+                "14aede12.812b52",
+                "749a82bc.22781c",
+                "dff2a00b.5a9d2"
+            ]
+        ]
+    },
+    {
+        "id": "a35e5d65.cb88f",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "2",
+        "broker": "731f2b8f.b5dd54",
+        "x": 270,
+        "y": 346,
+        "wires": [
+            [
+                "14aede12.812b52",
+                "749a82bc.22781c",
+                "dff2a00b.5a9d2"
+            ]
+        ]
+    },
+    {
+        "id": "8ed703a7.2b71e",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor03",
+        "qos": "2",
+        "broker": "52e8c7eb.3a39f8",
+        "x": 311.0000114440918,
+        "y": 482.00001335144043,
+        "wires": [
+            [
+                "14aede12.812b52",
+                "749a82bc.22781c",
+                "dff2a00b.5a9d2"
+            ]
+        ]
+    },
+    {
+        "id": "749a82bc.22781c",
+        "type": "debug",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 726.1667308807373,
+        "y": 498.66669273376465,
+        "wires": []
+    },
+    {
+        "id": "d5a1b611.3e7fc8",
+        "type": "ui_chart",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 721.8984375,
+        "y": 578.16796875,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "dff2a00b.5a9d2",
+        "type": "function",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "func": "var msg1={};\nvar msg2 = {};\nvar msg3 ={};\nvar msg4 ={};\nmsg1.payload=+msg.payload.ec;\nmsg2.payload=+msg.payload.humi;\nmsg3.payload=+msg.payload.temp;\nmsg4.payload=+msg.payload.tds;\nmsg1.topic='EC';\nmsg2.topic='Humidity';\nmsg3.topic=\"temp\";\nmsg4.topic=\"tds\";\nreturn [msg1,msg2,msg3,msg4];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 533.0195274353027,
+        "y": 612.0039043426514,
+        "wires": [
+            [
+                "d5a1b611.3e7fc8"
+            ],
+            [
+                "d5a1b611.3e7fc8"
+            ],
+            [
+                "d5a1b611.3e7fc8"
+            ],
+            [
+                "d5a1b611.3e7fc8"
+            ]
+        ]
+    },
+    {
+        "id": "e46a9ad9.8029b8",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "olympic_hutech",
+        "name": ""
+    },
+    {
+        "id": "b17d539b.45e71",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client1",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "731f2b8f.b5dd54",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "QuocQuan",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "52e8c7eb.3a39f8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_3",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
