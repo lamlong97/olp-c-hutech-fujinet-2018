@@ -1,0 +1,59 @@
+[
+    {
+        "id": "c8656ad8.1fd1c8",
+        "type": "tab",
+        "label": "Olympic Câu 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cb443936.89d878",
+        "type": "inject",
+        "z": "c8656ad8.1fd1c8",
+        "name": "",
+        "topic": "",
+        "payload": "welcome to hutech",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 233,
+        "y": 133,
+        "wires": [
+            [
+                "59e85253.f677bc"
+            ]
+        ]
+    },
+    {
+        "id": "f3053424.b21f38",
+        "type": "debug",
+        "z": "c8656ad8.1fd1c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 632,
+        "y": 139,
+        "wires": []
+    },
+    {
+        "id": "59e85253.f677bc",
+        "type": "function",
+        "z": "c8656ad8.1fd1c8",
+        "name": "UpperCase",
+        "func": "msg.payload = msg.payload.toLowerCase().split(' ');\n\n  for (var i = 0; i < msg.payload.length; i++) {\n    msg.payload[i] = msg.payload[i].charAt(0).toUpperCase() + msg.payload[i].slice(1); \n  }\n msg.payload = msg.payload.join(' ');\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 447,
+        "y": 142,
+        "wires": [
+            [
+                "f3053424.b21f38"
+            ]
+        ]
+    }
+]
