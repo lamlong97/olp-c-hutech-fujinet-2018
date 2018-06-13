@@ -1,0 +1,109 @@
+[
+    {
+        "id": "8677cb69.dbe818",
+        "type": "tab",
+        "label": "Olympic Câu 8",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "14aede12.812b52",
+        "type": "mongodb out",
+        "z": "8677cb69.dbe818",
+        "mongodb": "e46a9ad9.8029b8",
+        "name": "Olympic Hutech",
+        "collection": "cau8",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 621.1666793823242,
+        "y": 353.0000534057617,
+        "wires": []
+    },
+    {
+        "id": "515b9cae.7f4014",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "0",
+        "broker": "32336f22.c41e4",
+        "x": 269.00000762939453,
+        "y": 251.00000762939453,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "b3dca26d.f10b4",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "2",
+        "broker": "9a649b99.02efc8",
+        "x": 274,
+        "y": 460,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "e46a9ad9.8029b8",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "olympic_hutech",
+        "name": ""
+    },
+    {
+        "id": "32336f22.c41e4",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_2",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "9a649b99.02efc8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_1",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
