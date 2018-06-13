@@ -1,12 +1,5 @@
 [
     {
-        "id": "d6a8f317.1edd1",
-        "type": "tab",
-        "label": "Olympic Câu 5",
-        "disabled": true,
-        "info": ""
-    },
-    {
         "id": "4d9cb973.659498",
         "type": "inject",
         "z": "d6a8f317.1edd1",
@@ -108,7 +101,7 @@
         "name": "",
         "broker": "broker.mqtt-dashboard.com",
         "port": "1883",
-        "clientid": "test-client",
+        "clientid": "client_2",
         "usetls": false,
         "compatmode": true,
         "keepalive": "60",
