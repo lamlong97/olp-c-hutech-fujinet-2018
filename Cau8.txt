@@ -1,0 +1,141 @@
+[
+    {
+        "id": "8677cb69.dbe818",
+        "type": "tab",
+        "label": "Olympic Câu 8",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "14aede12.812b52",
+        "type": "mongodb out",
+        "z": "8677cb69.dbe818",
+        "mongodb": "e46a9ad9.8029b8",
+        "name": "Olympic Hutech",
+        "collection": "cau8",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 621.1666793823242,
+        "y": 353.0000534057617,
+        "wires": []
+    },
+    {
+        "id": "94244b5e.009208",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "2",
+        "broker": "b17d539b.45e71",
+        "x": 337,
+        "y": 248,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "a35e5d65.cb88f",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "2",
+        "broker": "731f2b8f.b5dd54",
+        "x": 270,
+        "y": 346,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "8ed703a7.2b71e",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor03",
+        "qos": "2",
+        "broker": "52e8c7eb.3a39f8",
+        "x": 311.0000114440918,
+        "y": 482.00001335144043,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "e46a9ad9.8029b8",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "olympic_hutech",
+        "name": ""
+    },
+    {
+        "id": "b17d539b.45e71",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client1",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "731f2b8f.b5dd54",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "QuocQuan",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "52e8c7eb.3a39f8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_3",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
