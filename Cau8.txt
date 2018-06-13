@@ -22,15 +22,15 @@
         "wires": []
     },
     {
-        "id": "515b9cae.7f4014",
+        "id": "94244b5e.009208",
         "type": "mqtt in",
         "z": "8677cb69.dbe818",
         "name": "",
         "topic": "OLPC-03/Sensor01",
-        "qos": "0",
-        "broker": "32336f22.c41e4",
-        "x": 269.00000762939453,
-        "y": 251.00000762939453,
+        "qos": "2",
+        "broker": "b17d539b.45e71",
+        "x": 337,
+        "y": 248,
         "wires": [
             [
                 "14aede12.812b52"
@@ -38,15 +38,31 @@
         ]
     },
     {
-        "id": "b3dca26d.f10b4",
+        "id": "a35e5d65.cb88f",
         "type": "mqtt in",
         "z": "8677cb69.dbe818",
         "name": "",
         "topic": "OLPC-03/Sensor02",
         "qos": "2",
-        "broker": "9a649b99.02efc8",
-        "x": 274,
-        "y": 460,
+        "broker": "731f2b8f.b5dd54",
+        "x": 270,
+        "y": 346,
+        "wires": [
+            [
+                "14aede12.812b52"
+            ]
+        ]
+    },
+    {
+        "id": "8ed703a7.2b71e",
+        "type": "mqtt in",
+        "z": "8677cb69.dbe818",
+        "name": "",
+        "topic": "OLPC-03/Sensor03",
+        "qos": "2",
+        "broker": "52e8c7eb.3a39f8",
+        "x": 311.0000114440918,
+        "y": 482.00001335144043,
         "wires": [
             [
                 "14aede12.812b52"
@@ -63,44 +79,60 @@
         "name": ""
     },
     {
-        "id": "32336f22.c41e4",
+        "id": "b17d539b.45e71",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
         "broker": "broker.mqtt-dashboard.com",
         "port": "1883",
-        "clientid": "client_2",
+        "clientid": "client1",
         "usetls": false,
         "compatmode": true,
-        "keepalive": "60",
+        "keepalive": "6000",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
         "closeTopic": "",
-        "closeQos": "0",
         "closePayload": "",
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
     },
     {
-        "id": "9a649b99.02efc8",
+        "id": "731f2b8f.b5dd54",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "QuocQuan",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "52e8c7eb.3a39f8",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
         "broker": "broker.mqtt-dashboard.com",
         "port": "1883",
-        "clientid": "client_1",
+        "clientid": "client_3",
         "usetls": false,
         "compatmode": true,
-        "keepalive": "60",
+        "keepalive": "6000",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
         "closeTopic": "",
-        "closeQos": "0",
         "closePayload": "",
         "willTopic": "",
         "willQos": "0",
