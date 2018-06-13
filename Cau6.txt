@@ -1,86 +1,100 @@
 [
     {
-        "id": "7e5da324.47e7cc",
+        "id": "33a12b46.223c54",
         "type": "tab",
         "label": "Olympic Câu 6",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "6a255587.aead0c",
+        "id": "493d2533.4b5f6c",
         "type": "inject",
-        "z": "7e5da324.47e7cc",
+        "z": "33a12b46.223c54",
         "name": "",
         "topic": "",
         "payload": "",
-        "payloadType": "num",
+        "payloadType": "date",
         "repeat": "3",
         "crontab": "",
         "once": false,
-        "onceDelay": 0.1,
-        "x": 323.0000114440918,
-        "y": 173.00000476837158,
+        "x": 283.00001525878906,
+        "y": 158.00000762939453,
         "wires": [
             [
-                "1fe46799.c81178"
+                "f84b93f.ca5517"
             ]
         ]
     },
     {
-        "id": "1fe46799.c81178",
+        "id": "f84b93f.ca5517",
         "type": "function",
-        "z": "7e5da324.47e7cc",
-        "name": "TDS",
-        "func": "function getRandomInt(min, max) {\n  min = Math.ceil(min);\n  max = Math.floor(max);\n  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive\n}\nvar x=getRandomInt(280,1400);\nmsg.payload={\"tds\":x};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 603.0000114440918,
-        "y": 173.00000476837158,
-        "wires": [
-            [
-                "a037f295.1575"
-            ]
-        ]
-    },
-    {
-        "id": "fb40d381.78892",
-        "type": "mqtt in",
-        "z": "7e5da324.47e7cc",
+        "z": "33a12b46.223c54",
         "name": "",
-        "topic": "OLPC-03/Sensor02",
-        "qos": "2",
-        "broker": "9a649b99.02efc8",
-        "x": 343.0000114440918,
-        "y": 453.0000047683716,
+        "func": "\nvar tds = Math.floor((Math.random() *1121) + 280);\nmsg.payload ={\"tds\":tds};\n\nreturn msg;",
+        "outputs": "1",
+        "noerr": 0,
+        "x": 487.00001525878906,
+        "y": 165.00000762939453,
         "wires": [
             [
-                "a6d735cc.8dc428"
+                "1cdb8b88.bb4674"
             ]
         ]
     },
     {
-        "id": "a037f295.1575",
+        "id": "1cdb8b88.bb4674",
+        "type": "json",
+        "z": "33a12b46.223c54",
+        "name": "",
+        "pretty": false,
+        "x": 684.0000152587891,
+        "y": 144.00000762939453,
+        "wires": [
+            [
+                "d4d11a72.c2d3e8",
+                "8928e079.9f60b"
+            ]
+        ]
+    },
+    {
+        "id": "d4d11a72.c2d3e8",
         "type": "mqtt out",
-        "z": "7e5da324.47e7cc",
+        "z": "33a12b46.223c54",
         "name": "",
         "topic": "OLPC-03/Sensor02",
         "qos": "",
         "retain": "",
-        "broker": "9a649b99.02efc8",
-        "x": 973.0000114440918,
-        "y": 173.00000476837158,
+        "broker": "731f2b8f.b5dd54",
+        "x": 837.0000152587891,
+        "y": 253.00000762939453,
         "wires": []
     },
     {
-        "id": "6bc8bf6f.34985",
-        "type": "ui_chart",
-        "z": "7e5da324.47e7cc",
+        "id": "2ab93ef2.b12432",
+        "type": "mqtt in",
+        "z": "33a12b46.223c54",
         "name": "",
-        "group": "12b6a6c8.bedc29",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "2",
+        "broker": "731f2b8f.b5dd54",
+        "x": 445.00001525878906,
+        "y": 290.00000762939453,
+        "wires": [
+            [
+                "c3e155ed.ee0b98"
+            ]
+        ]
+    },
+    {
+        "id": "c5692adb.4cd868",
+        "type": "ui_chart",
+        "z": "33a12b46.223c54",
+        "name": "",
+        "group": "2e0f2a20.695366",
         "order": 0,
         "width": 0,
         "height": 0,
-        "label": "TDS In Chart",
+        "label": "chart",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -106,63 +120,86 @@
             "#c5b0d5"
         ],
         "useOldStyle": false,
-        "x": 933.0000114440918,
-        "y": 353.0000047683716,
+        "x": 838.0000152587891,
+        "y": 393.00000762939453,
         "wires": [
             [],
             []
         ]
     },
     {
-        "id": "a6d735cc.8dc428",
+        "id": "95f6adf9.900e3",
         "type": "function",
-        "z": "7e5da324.47e7cc",
-        "name": "Recive TDS ",
-        "func": "var msq={};\nmsg.payload=Math.round(Math.random()*(1400-280)+280);\nmsg.topic='tds: ';\nreturn msg;",
-        "outputs": 1,
+        "z": "33a12b46.223c54",
+        "name": "",
+        "func": "var msg1={};\n\nmsg1.payload=+msg.payload.tds;\n\nmsg1.topic='TDS';\n\nreturn msg1;",
+        "outputs": "1",
         "noerr": 0,
-        "x": 643.0000114440918,
-        "y": 473.0000047683716,
+        "x": 697.0000152587891,
+        "y": 351.00000762939453,
         "wires": [
             [
-                "6bc8bf6f.34985"
+                "c5692adb.4cd868"
             ]
         ]
     },
     {
-        "id": "9a649b99.02efc8",
+        "id": "c3e155ed.ee0b98",
+        "type": "json",
+        "z": "33a12b46.223c54",
+        "name": "",
+        "pretty": true,
+        "x": 566.0000152587891,
+        "y": 385.00000762939453,
+        "wires": [
+            [
+                "95f6adf9.900e3"
+            ]
+        ]
+    },
+    {
+        "id": "8928e079.9f60b",
+        "type": "debug",
+        "z": "33a12b46.223c54",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1007.1667747497559,
+        "y": 112.00000381469727,
+        "wires": []
+    },
+    {
+        "id": "731f2b8f.b5dd54",
         "type": "mqtt-broker",
         "z": "",
-        "name": "",
         "broker": "broker.mqtt-dashboard.com",
         "port": "1883",
-        "clientid": "client_1",
+        "clientid": "QuocQuan",
         "usetls": false,
         "compatmode": true,
-        "keepalive": "60",
+        "keepalive": "6000",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
     },
     {
-        "id": "12b6a6c8.bedc29",
+        "id": "2e0f2a20.695366",
         "type": "ui_group",
         "z": "",
-        "name": "TDS",
-        "tab": "35b714f1.6b851c",
+        "name": "Default",
+        "tab": "1aca20c5.72885f",
         "disp": true,
-        "width": "6",
-        "collapse": false
+        "width": "6"
     },
     {
-        "id": "35b714f1.6b851c",
+        "id": "1aca20c5.72885f",
         "type": "ui_tab",
         "z": "",
         "name": "Home",
