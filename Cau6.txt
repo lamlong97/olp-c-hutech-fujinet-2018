@@ -1,0 +1,171 @@
+[
+    {
+        "id": "7e5da324.47e7cc",
+        "type": "tab",
+        "label": "Olympic Câu 6",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6a255587.aead0c",
+        "type": "inject",
+        "z": "7e5da324.47e7cc",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 323.0000114440918,
+        "y": 173.00000476837158,
+        "wires": [
+            [
+                "1fe46799.c81178"
+            ]
+        ]
+    },
+    {
+        "id": "1fe46799.c81178",
+        "type": "function",
+        "z": "7e5da324.47e7cc",
+        "name": "TDS",
+        "func": "function getRandomInt(min, max) {\n  min = Math.ceil(min);\n  max = Math.floor(max);\n  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive\n}\nvar x=getRandomInt(280,1400);\nmsg.payload={\"tds\":x};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 603.0000114440918,
+        "y": 173.00000476837158,
+        "wires": [
+            [
+                "a037f295.1575"
+            ]
+        ]
+    },
+    {
+        "id": "fb40d381.78892",
+        "type": "mqtt in",
+        "z": "7e5da324.47e7cc",
+        "name": "",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "2",
+        "broker": "9a649b99.02efc8",
+        "x": 343.0000114440918,
+        "y": 453.0000047683716,
+        "wires": [
+            [
+                "a6d735cc.8dc428"
+            ]
+        ]
+    },
+    {
+        "id": "a037f295.1575",
+        "type": "mqtt out",
+        "z": "7e5da324.47e7cc",
+        "name": "",
+        "topic": "OLPC-03/Sensor02",
+        "qos": "",
+        "retain": "",
+        "broker": "9a649b99.02efc8",
+        "x": 973.0000114440918,
+        "y": 173.00000476837158,
+        "wires": []
+    },
+    {
+        "id": "6bc8bf6f.34985",
+        "type": "ui_chart",
+        "z": "7e5da324.47e7cc",
+        "name": "",
+        "group": "12b6a6c8.bedc29",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "TDS In Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 933.0000114440918,
+        "y": 353.0000047683716,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a6d735cc.8dc428",
+        "type": "function",
+        "z": "7e5da324.47e7cc",
+        "name": "Recive TDS ",
+        "func": "var msq={};\nmsg.payload=Math.round(Math.random()*(1400-280)+280);\nmsg.topic='tds: ';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 643.0000114440918,
+        "y": 473.0000047683716,
+        "wires": [
+            [
+                "6bc8bf6f.34985"
+            ]
+        ]
+    },
+    {
+        "id": "9a649b99.02efc8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client_1",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "12b6a6c8.bedc29",
+        "type": "ui_group",
+        "z": "",
+        "name": "TDS",
+        "tab": "35b714f1.6b851c",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "35b714f1.6b851c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
