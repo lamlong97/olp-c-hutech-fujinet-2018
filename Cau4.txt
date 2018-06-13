@@ -1,0 +1,123 @@
+[
+    {
+        "id": "bc523b97.05bf18",
+        "type": "tab",
+        "label": "Olympic Câu 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "86cdb07c.19f0d",
+        "type": "inject",
+        "z": "bc523b97.05bf18",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 281.00001525878906,
+        "y": 263.0000066757202,
+        "wires": [
+            [
+                "4e26415e.c5b93"
+            ]
+        ]
+    },
+    {
+        "id": "4e26415e.c5b93",
+        "type": "function",
+        "z": "bc523b97.05bf18",
+        "name": "random",
+        "func": "var x = Math.floor((Math.random() * 21) + 20);\nif(x<=25)\n    msg.payload = \"Lower 25\";\nelse{\n    if(x>=32)\n    msg.payload = \"Over 32\";\n    else\n    {\n        msg.payload = \"Normal\";\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 491.00001525878906,
+        "y": 268.0000066757202,
+        "wires": [
+            [
+                "bb0953de.cfaef"
+            ]
+        ]
+    },
+    {
+        "id": "f8134a61.15f058",
+        "type": "debug",
+        "z": "bc523b97.05bf18",
+        "name": "Lower 25",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 872.0000152587891,
+        "y": 263.0000066757202,
+        "wires": []
+    },
+    {
+        "id": "81204659.30f8a8",
+        "type": "debug",
+        "z": "bc523b97.05bf18",
+        "name": "Over 32",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 793.0000152587891,
+        "y": 332.0000066757202,
+        "wires": []
+    },
+    {
+        "id": "521dde6a.913ef",
+        "type": "debug",
+        "z": "bc523b97.05bf18",
+        "name": "Normal",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 754.0000152587891,
+        "y": 413.0000066757202,
+        "wires": []
+    },
+    {
+        "id": "bb0953de.cfaef",
+        "type": "switch",
+        "z": "bc523b97.05bf18",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "25",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "32",
+                "vt": "str"
+            },
+            {
+                "t": "btwn",
+                "v": "25",
+                "vt": "num",
+                "v2": "32",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 3,
+        "x": 569.0000152587891,
+        "y": 364.0000066757202,
+        "wires": [
+            [
+                "f8134a61.15f058"
+            ],
+            [
+                "81204659.30f8a8"
+            ],
+            [
+                "521dde6a.913ef"
+            ]
+        ]
+    }
+]

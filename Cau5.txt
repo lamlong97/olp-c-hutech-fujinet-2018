@@ -1,0 +1,121 @@
+[
+    {
+        "id": "3c9b9c6e.f1c2b4",
+        "type": "tab",
+        "label": "Olympic Câu 5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "dd4425d0.472868",
+        "type": "inject",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 240.00001525878906,
+        "y": 188.00000858306885,
+        "wires": [
+            [
+                "c6613340.19321"
+            ]
+        ]
+    },
+    {
+        "id": "c6613340.19321",
+        "type": "function",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "func": "\nvar temp = Math.floor((Math.random() * 21) + 20);\nmsg.payload ={\"temp\":temp};\n\nreturn msg;",
+        "outputs": "1",
+        "noerr": 0,
+        "x": 444.00001525878906,
+        "y": 195.00000858306885,
+        "wires": [
+            [
+                "bf1abbbb.0b7b68"
+            ]
+        ]
+    },
+    {
+        "id": "bf1abbbb.0b7b68",
+        "type": "json",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "pretty": false,
+        "x": 641.0000152587891,
+        "y": 174.00000858306885,
+        "wires": [
+            [
+                "ce62f95a.cbf088"
+            ]
+        ]
+    },
+    {
+        "id": "ce62f95a.cbf088",
+        "type": "mqtt out",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "",
+        "retain": "",
+        "broker": "b17d539b.45e71",
+        "x": 794.0000152587891,
+        "y": 283.00000858306885,
+        "wires": []
+    },
+    {
+        "id": "b3c2257d.247fc8",
+        "type": "mqtt in",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "topic": "OLPC-03/Sensor01",
+        "qos": "2",
+        "broker": "b17d539b.45e71",
+        "x": 402.00001525878906,
+        "y": 320.00000858306885,
+        "wires": [
+            [
+                "369d086e.1f8568"
+            ]
+        ]
+    },
+    {
+        "id": "369d086e.1f8568",
+        "type": "debug",
+        "z": "3c9b9c6e.f1c2b4",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 617.0000152587891,
+        "y": 345.00000858306885,
+        "wires": []
+    },
+    {
+        "id": "b17d539b.45e71",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "client1",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "6000",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
