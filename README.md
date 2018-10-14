@@ -1,6 +1,6 @@
-Hội thi Olypic Tin học HUTECH - FUJINET 2018 </br>
+Hội thi Olympic Tin học HUTECH - FUJINET 2018 </br>
+Cuộc thi Olympic khối C : Chủ đề mã nguồn mở, IOT, NodeRed </br> 
 Mã đội: OLP.C.03 </br>
-Tên đội: Công chúa bụng mỡ </br> 
 Thành viên: </br>
 1. Lâm Thành Long - 1511060539
 2. Lầu Sẹc Dần - 1511060444 
